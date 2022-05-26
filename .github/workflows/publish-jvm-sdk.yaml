@@ -5,11 +5,11 @@ on:
     inputs:
       sdk:
         required: true
-        default: kotlin-server
+        default: server-api
         description: 'SDK Name'
         type: choice
         options:
-          - kotlin-server
+          - server-api
 
 jobs:
   publish-release:
@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 8
+          distribution: 'adopt'
 
       - name: Setup build cache
         uses: actions/cache@v2.1.6
@@ -33,7 +34,8 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Publish artifact
+        working-directory: ./sdk/jvm
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./sdk/jvm/gradlew :${{ github.event.inputs.sdk }}:publish
+          ./gradlew :${{ github.event.inputs.sdk }}:publish

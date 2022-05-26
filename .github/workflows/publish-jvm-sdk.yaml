@@ -1,0 +1,39 @@
+name: Publish jvm sdk
+
+on:
+  workflow_dispatch:
+    inputs:
+      sdk:
+        required: true
+        default: kotlin-server
+        description: 'SDK Name'
+        type: choice
+        options:
+          - kotlin-server
+
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 8
+
+      - name: Setup build cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Publish artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./sdk/jvm/gradlew :${{ github.event.inputs.sdk }}:publish

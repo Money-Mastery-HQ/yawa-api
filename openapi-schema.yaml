@@ -91,6 +91,18 @@ paths:
                 $ref: '#/components/responses/401Unauthorized'
               500:
                 $ref: '#/components/responses/500InternalError'
+      delete:
+        summary: Delete user account
+        operationId: deleteUser
+        tags:
+          - user
+        responses:
+          204:
+            description: Ok
+          401:
+            $ref: '#/components/responses/401Unauthorized'
+          500:
+            $ref: '#/components/responses/500InternalError'
   /users/me/preferences:
       get:
         summary: Get authenticated user preferences

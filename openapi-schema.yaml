@@ -582,13 +582,17 @@ paths:
                       schema:
                           $ref: '#/components/schemas/CreateEventRecordRequest'
           responses:
-              201:
+              200:
                 description: Created
                 headers:
                     Location:
                         description: Url to event record
                         schema:
                             type: string
+                content:
+                  'application/json':
+                    schema:
+                      $ref: '#/components/schemas/ResourceIdentifier'
               400:
                 $ref: '#/components/responses/400BadRequest'
               401:

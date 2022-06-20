@@ -675,113 +675,6 @@ paths:
                 $ref: '#/components/responses/404ItemNotFound'
               500:
                 $ref: '#/components/responses/500InternalError'          
-  /locations:
-      post:
-          summary: Create location record
-          operationId: createLocation
-          tags:
-              - location
-          requestBody:
-              required: true
-              description: Location to create
-              content:
-                  'application/json':
-                      schema:
-                          $ref: '#/components/schemas/CreateLocationRecordRequest'
-          responses:
-              201:
-                description: Created
-                headers:
-                    Location:
-                        description: Url to location record
-                        schema:
-                            type: string
-              400:
-                $ref: '#/components/responses/400BadRequest'
-              401:
-                $ref: '#/components/responses/401Unauthorized'
-              500:
-                $ref: '#/components/responses/500InternalError'
-      get:
-        summary: Search location records
-        operationId: getLocations
-        tags:
-            - location
-        responses:
-            200:
-                description: OK
-                content:
-                    'application/json':
-                        schema:
-                            type: array
-                            items:
-                                $ref: '#/components/schemas/LocationRecord'
-            401:
-                $ref: '#/components/responses/401Unauthorized'
-            500:
-                $ref: '#/components/responses/500InternalError'
-  /locations/{id}:
-      get:
-          summary: Get location record by ID
-          operationId: getLocation
-          tags:
-              - location
-          parameters:
-              - $ref: '#/components/parameters/idParam'
-          responses:
-              200:
-                description: OK
-                content:
-                    'application/json':
-                        schema:
-                            $ref: '#/components/schemas/LocationRecord'
-              401:
-                $ref: '#/components/responses/401Unauthorized'
-              404:
-                $ref: '#/components/responses/404ItemNotFound'
-              500:
-                $ref: '#/components/responses/500InternalError'
-      put:
-          summary: Update location record by ID
-          operationId: updateLocation
-          tags:
-              - location
-          parameters:
-              - $ref: '#/components/parameters/idParam'
-          requestBody:
-              required: true
-              description: New location info
-              content:
-                  'application/json':
-                      schema:
-                        $ref: '#/components/schemas/UpdateLocationRecordRequest'
-          responses:
-            204:
-                description: OK
-            400:
-                $ref: '#/components/responses/400BadRequest'
-            401:
-                $ref: '#/components/responses/401Unauthorized'
-            404:
-                $ref: '#/components/responses/404ItemNotFound'
-            500:
-                $ref: '#/components/responses/500InternalError'
-      delete:
-          summary: Delete location record by ID
-          operationId: deleteLocation
-          tags:
-              - location
-          parameters:
-              - $ref: '#/components/parameters/idParam'
-          responses:
-              204:
-                description: OK
-              401:
-                $ref: '#/components/responses/401Unauthorized'
-              404:
-                $ref: '#/components/responses/404ItemNotFound'
-              500:
-                $ref: '#/components/responses/500InternalError'
 components:
   schemas:
     ResourceIdentifier:
@@ -1051,20 +944,11 @@ components:
     LocationRecord:
         type: object
         required:
-            - id
             - name
-            - archived
         properties:
-            id:
-                type: integer
-                format: int64
-                example: 1
             name:
                 type: string
                 example: Green City
-            archived:
-                type: boolean
-                example: false
     ContactRecord:
         type: object
         required:
@@ -1188,8 +1072,7 @@ components:
                   type: integer
                   format: int64
               location:
-                  type: integer
-                  format: int64
+                  type: string
               contact:
                   type: string
               amountConversion:
@@ -1271,26 +1154,6 @@ components:
                 type: string
                 example: Dad's birthday
             finished:
-                type: boolean
-                example: true  
-    CreateLocationRecordRequest:
-        type: object
-        required:
-            - name
-        properties:
-            name:
-                type: string
-                example: Green City 
-    UpdateLocationRecordRequest:
-        type: object
-        required:
-            - name
-            - archived
-        properties:
-            name:
-                type: string
-                example: Green City
-            archived:
                 type: boolean
                 example: true
     UpdateUserPreferenceRecordRequest:

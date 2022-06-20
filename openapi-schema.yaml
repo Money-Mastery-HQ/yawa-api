@@ -946,6 +946,7 @@ components:
             - EUR
             - USD
             - RUB
+            - PLN
     CurrencyRecord:
       type: object
       required:

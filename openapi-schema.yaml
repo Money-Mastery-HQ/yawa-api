@@ -979,6 +979,9 @@ components:
               username: 
                   type: string
                   example: iivanov
+              email:
+                  type: string
+                  example: iivanov@gmail.com
               password:
                   type: string
                   example: qwerty1234

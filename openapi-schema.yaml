@@ -993,7 +993,6 @@ components:
     CreateUserRecordRequest:
         type: object
         required:
-          - username
           - password
           - timeZoneOffset
           - useDefaultCategories

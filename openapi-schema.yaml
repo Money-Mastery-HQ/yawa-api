@@ -131,7 +131,7 @@ paths:
           content:
             'application/json':
               schema:
-                $ref: '#/components/schemas/UpdateUserPreferenceRecordRequest'
+                $ref: '#/components/schemas/UpdateUserBasicPreferencesRequest'
         responses:
             204:
               description: OK
@@ -141,6 +141,28 @@ paths:
               $ref: '#/components/responses/401Unauthorized'
             500:
               $ref: '#/components/responses/500InternalError'
+  /users/me/preferences/basic:
+    put:
+      summary: Update authenticated user basic preferences
+      operationId: updateAuthenticatedUserBasicPreferences
+      tags:
+        - user
+      requestBody:
+        required: true
+        description: Basic preferences info
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/UpdateUserBasicPreferencesRequest'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
   /users/me/preferences/wallet:
     put:
       summary: Update authenticated user selected wallet
@@ -1155,7 +1177,7 @@ components:
             finished:
                 type: boolean
                 example: true
-    UpdateUserPreferenceRecordRequest:
+    UpdateUserBasicPreferencesRequest:
       type: object
       required:
         - timeZoneOffset

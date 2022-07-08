@@ -115,7 +115,7 @@ paths:
             content:
               'application/json':
                 schema:
-                  $ref: '#/components/schemas/UserPreferenceRecord'
+                  $ref: '#/components/schemas/UserPreferencesRecord'
           401:
             $ref: '#/components/responses/401Unauthorized'
           500:
@@ -127,11 +127,11 @@ paths:
           - user
         requestBody:
           required: true
-          description: New category info
+          description: User preferences update
           content:
             'application/json':
               schema:
-                $ref: '#/components/schemas/UpdateUserBasicPreferencesRequest'
+                $ref: '#/components/schemas/UpdateUserPreferencesRequest'
         responses:
             204:
               description: OK
@@ -754,8 +754,8 @@ components:
           type: string
           example: iivanov@gmail.com
         preferences:
-          $ref: '#/components/schemas/UserPreferenceRecord'
-    UserPreferenceRecord:
+          $ref: '#/components/schemas/UserPreferencesRecord'
+    UserPreferencesRecord:
       type: object
       required:
         - timeZoneOffset
@@ -1187,6 +1187,33 @@ components:
             finished:
                 type: boolean
                 example: true
+    UpdateUserPreferencesRequest:
+      type: object
+      required:
+        - timeZoneOffset
+        - firstDayOfWeek
+        - firstDayOfMonth
+        - firstMonthOfYear
+      properties:
+        selectedWallet:
+          type: integer
+          format: int64
+        timeZoneOffset:
+          type: integer
+          format: int32
+          example: 10800
+        firstDayOfWeek:
+          type: integer
+          format: int32
+          example: 1
+        firstDayOfMonth:
+          type: integer
+          format: int32
+          example: 10
+        firstMonthOfYear:
+          type: integer
+          format: int32
+          example: 1
     UpdateUserBasicPreferencesRequest:
       type: object
       required:

@@ -715,11 +715,15 @@ components:
         type: object
         required:
             - username
+            - email
             - password
         properties:
             username:
                 type: string
                 example: iivanov
+            email:
+              type: string
+              example: iivanov@gmail.com
             password:
                 type: string
                 example: qwerty1234
@@ -736,6 +740,7 @@ components:
       required:
         - id
         - username
+        - email
         - preferences
       properties:
         id:
@@ -745,6 +750,9 @@ components:
         username:
             type: string
             example: iivanov
+        email:
+          type: string
+          example: iivanov@gmail.com
         preferences:
           $ref: '#/components/schemas/UserPreferenceRecord'
     UserPreferenceRecord:
@@ -993,13 +1001,11 @@ components:
     CreateUserRecordRequest:
         type: object
         required:
+          - email
           - password
           - timeZoneOffset
           - useDefaultCategories
         properties:
-              username: 
-                  type: string
-                  example: iivanov
               email:
                   type: string
                   example: iivanov@gmail.com

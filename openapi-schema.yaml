@@ -714,8 +714,6 @@ components:
     AuthenticateUserRequest:
         type: object
         required:
-            - username
-            - email
             - password
         properties:
             username:
@@ -739,7 +737,6 @@ components:
       type: object
       required:
         - id
-        - username
         - email
         - preferences
       properties:
@@ -747,9 +744,6 @@ components:
           type: integer
           format: int64
           example: 1
-        username:
-            type: string
-            example: iivanov
         email:
           type: string
           example: iivanov@gmail.com

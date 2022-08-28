@@ -72,6 +72,8 @@ paths:
                             $ref: '#/components/schemas/AuthenticationData'
               400:
                 $ref: '#/components/responses/400BadRequest'
+              403:
+                $ref: '#/components/responses/403Forbidden'
               500:
                 $ref: '#/components/responses/500InternalError'
   /users/me:
@@ -1252,6 +1254,12 @@ components:
             'application/json':
                 schema:
                     $ref: '#/components/schemas/Problem'
+      403Forbidden:
+        description: Operation is forbidden
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Problem'
       404ItemNotFound:
         description: Item not found
         content:

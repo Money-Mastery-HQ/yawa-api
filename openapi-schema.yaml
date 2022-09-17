@@ -379,12 +379,14 @@ paths:
                   type: string
                   format: date-time
                   example: 2021-12-08T22:50+03:00
-            - name: wallets
+            - name: wallet
               in: query
               required: false
               schema:
-                  type: string
-                  example: 1,2
+                  type: array
+                  items:
+                    type: integer
+                    format: int64
         responses:
             200:
                 description: OK

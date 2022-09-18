@@ -921,6 +921,7 @@ components:
         required:
           - id
           - name
+          - archived
           - currencyCode
           - balance
         properties:
@@ -931,6 +932,9 @@ components:
             name:
                 type: string
                 example: Cash
+            archived:
+                type: boolean
+                example: false
             currencyCode:
               $ref: '#/components/schemas/CurrencyCode'
             balance:
@@ -1149,11 +1153,15 @@ components:
         type: object
         required:
           - name
+          - archived
           - currencyCode
         properties:
               name:
                   type: string
                   example: Cash
+              archived:
+                  type: boolean
+                  default: false
               currencyCode:
                 $ref: '#/components/schemas/CurrencyCode'
               initialBalance:
@@ -1164,11 +1172,15 @@ components:
         type: object
         required:
           - name
+          - archived
           - currencyCode
         properties:
               name:
                   type: string
                   example: Cash
+              archived:
+                type: boolean
+                default: false
               currencyCode:
                   $ref: '#/components/schemas/CurrencyCode'
     CreateEventRecordRequest:

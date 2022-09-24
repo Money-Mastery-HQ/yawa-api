@@ -964,6 +964,7 @@ components:
         required:
           - id
           - name
+          - archived
           - currencyCode
         properties:
             id:
@@ -973,6 +974,9 @@ components:
             name:
                 type: string
                 example: Cash
+            archived:
+              type: boolean
+              example: false
             currencyCode:
               $ref: '#/components/schemas/CurrencyCode'
     WalletRecord:

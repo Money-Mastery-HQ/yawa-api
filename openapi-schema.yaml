@@ -879,6 +879,8 @@ components:
               $ref: '#/components/schemas/LocationRecord'
             contact:
               $ref: '#/components/schemas/ContactRecord'
+            amountConversion:
+              $ref: '#/components/schemas/AmountConversion'
     MiniCategoryRecord:
         type: object
         required:

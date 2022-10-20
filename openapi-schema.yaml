@@ -1209,6 +1209,8 @@ components:
                   type: string
               amountConversion:
                 $ref: '#/components/schemas/AmountConversion'
+              correlationId:
+                type: string
     CreateCategoryRecordRequest:
         type: object
         required:
@@ -1230,6 +1232,8 @@ components:
                   type: integer
                   format: int64
                   example: 1
+              correlationId:
+                type: string
     UpdateCategoryRecordRequest:
         type: object
         required:
@@ -1266,6 +1270,8 @@ components:
                   type: number
                   format: float
                   example: 4.2
+              correlationId:
+                type: string
     UpdateWalletRecordRequest:
         type: object
         required:
@@ -1293,6 +1299,8 @@ components:
             finished:
                 type: boolean
                 example: true
+            correlationId:
+              type: string
     UpdateUserPreferencesRequest:
       type: object
       required:

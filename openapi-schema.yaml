@@ -842,6 +842,7 @@ components:
           - id
           - amount
           - timestamp
+          - processingTimestamp
           - income
           - excludeFromReport
           - category
@@ -859,6 +860,9 @@ components:
                 type: boolean
                 example: true
             timestamp:
+                type: string
+                format: date-time
+            processingTimestamp:
                 type: string
                 format: date-time
             tag:
@@ -1182,6 +1186,9 @@ components:
                   type: string
                   format: date-time
                   example: 2021-10-08T20:50+03:00
+              processingTimestamp:
+                type: string
+                format: date-time
               excludeFromReport:
                   type: boolean
                   example: false

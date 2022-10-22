@@ -1168,6 +1168,7 @@ components:
         required:
           - amount
           - timestamp
+          - processingTimestamp
           - excludeFromReport
           - category
           - wallet

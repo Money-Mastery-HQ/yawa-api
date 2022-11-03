@@ -742,7 +742,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/EventRecord'
+                  $ref: '#/components/schemas/DataExportRecord'
         401:
           $ref: '#/components/responses/401Unauthorized'
         500:

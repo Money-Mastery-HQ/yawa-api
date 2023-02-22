@@ -10,6 +10,7 @@ on:
         type: choice
         options:
           - server-api
+          - kotlin-client
 
 jobs:
   publish-release:

@@ -883,6 +883,8 @@ components:
               $ref: '#/components/schemas/LocationRecord'
             contact:
               $ref: '#/components/schemas/ContactRecord'
+            payee:
+              type: string
             amountConversion:
               $ref: '#/components/schemas/AmountConversion'
     MiniCategoryRecord:
@@ -1207,6 +1209,8 @@ components:
               location:
                   type: string
               contact:
+                  type: string
+              payee:
                   type: string
               amountConversion:
                 $ref: '#/components/schemas/AmountConversion'

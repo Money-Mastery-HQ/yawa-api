@@ -1,6 +1,4 @@
 plugins {
-    kotlin("plugin.spring") version "1.7.10"
-    id("io.spring.dependency-management") version "1.0.14.RELEASE"
     id("org.openapi.generator") version "6.2.1"
 }
 
@@ -11,17 +9,17 @@ repositories {
 }
 
 dependencies {
+    val ktorVersion = "2.1.3"
     val kotlinVersion = "1.7.10"
     val jacksonVersion = "2.13.4"
 
     implementation(kotlin("reflect", kotlinVersion))
     implementation(kotlin("stdlib-jdk8", kotlinVersion))
-    implementation("javax.validation:validation-api:2.0.1.Final")
-    compileOnly("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("org.springframework:spring-webmvc:5.3.23")
-    implementation("io.swagger:swagger-core:1.6.8")
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-jackson:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -41,24 +39,21 @@ java {
 }
 
 tasks.openApiGenerate {
-    generatorName.set("kotlin-spring")
+    generatorName.set("kotlin")
     inputSpec.set("$rootDir/../../openapi-schema.yaml")
     outputDir.set("$buildDir/generate")
     generateApiTests.set(false)
     generateApiDocumentation.set(false)
     generateModelDocumentation.set(false)
-    apiPackage.set("org.yawa.server.api.resource")
-    modelPackage.set("org.yawa.server.api.model")
+    apiPackage.set("org.yawa.klient.resource")
+    modelPackage.set("org.yawa.klient.model")
+    packageName.set("org.yawa.klient")
     configOptions.set(
         mapOf(
-            "interfaceOnly" to "true",
-            "gradleBuildFile" to "false",
-            "exceptionHandler" to "false",
             "enumPropertyNaming" to "UPPERCASE",
-            "swaggerAnnotations" to "true",
-            "useBeanValidation" to "false",
-            "documentationProvider" to "none",
-            "annotationLibrary" to "swagger1",
+            "omitGradleWrapper" to "true",
+            "library" to "jvm-ktor",
+            "serializationLibrary" to "jackson",
         )
     )
     typeMappings.set(

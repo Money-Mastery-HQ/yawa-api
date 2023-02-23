@@ -879,10 +879,6 @@ components:
               $ref: '#/components/schemas/MiniWalletRecord'
             event:
               $ref: '#/components/schemas/MiniEventRecord'
-            location:
-              $ref: '#/components/schemas/LocationRecord'
-            contact:
-              $ref: '#/components/schemas/ContactRecord'
             payee:
               type: string
             amountConversion:
@@ -1046,22 +1042,6 @@ components:
             finished:
                 type: boolean
                 example: false
-    LocationRecord:
-        type: object
-        required:
-            - name
-        properties:
-            name:
-                type: string
-                example: Green City
-    ContactRecord:
-        type: object
-        required:
-            - name
-        properties:
-            name:
-                type: string
-                example: Ivan Ivanov
     DataExportStatus:
       type: string
       example: PENDING
@@ -1206,10 +1186,6 @@ components:
               event:
                   type: integer
                   format: int64
-              location:
-                  type: string
-              contact:
-                  type: string
               payee:
                   type: string
               amountConversion:

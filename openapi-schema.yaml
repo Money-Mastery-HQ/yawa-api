@@ -945,6 +945,19 @@ components:
             - USD
             - RUB
             - PLN
+            - CZK
+            - CNY
+            - TRY
+            - GEL
+            - UZS
+            - KZT
+            - JPY
+            - THB
+            - BGN
+            - HUF
+            - RON
+            - SEK
+            - DKK
     CurrencyRecord:
       type: object
       required:

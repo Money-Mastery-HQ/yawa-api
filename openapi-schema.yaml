@@ -843,6 +843,7 @@ components:
         - id
         - email
         - preferences
+        - experiments
       properties:
         id:
           type: integer
@@ -853,6 +854,10 @@ components:
           example: iivanov@gmail.com
         preferences:
           $ref: '#/components/schemas/UserPreferencesRecord'
+        experiments:
+          type: array
+          items:
+            type: string
     UserPreferencesRecord:
       type: object
       required:

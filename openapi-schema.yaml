@@ -892,6 +892,7 @@ components:
           - timestamp
           - processingTimestamp
           - income
+          - hidden
           - excludeFromReport
           - category
           - wallet
@@ -921,6 +922,9 @@ components:
             excludeFromReport:
                 type: boolean
                 example: false
+            hidden:
+              type: boolean
+              example: false
             category:
               $ref: '#/components/schemas/MiniCategoryRecord'
             wallet:
@@ -1236,6 +1240,9 @@ components:
               excludeFromReport:
                   type: boolean
                   example: false
+              hidden:
+                type: boolean
+                example: false
               category:
                   type: integer
                   format: int64

@@ -1107,6 +1107,8 @@ components:
             finished:
                 type: boolean
                 example: false
+            groupName:
+                type: string
     DataExportStatus:
       type: string
       example: PENDING
@@ -1348,6 +1350,8 @@ components:
             finished:
                 type: boolean
                 example: true
+            groupName:
+                type: string
             correlationId:
               type: string
     UpdateUserPreferencesRequest:

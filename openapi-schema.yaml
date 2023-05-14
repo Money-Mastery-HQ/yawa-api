@@ -807,6 +807,97 @@ paths:
           $ref: '#/components/responses/404ItemNotFound'
         500:
           $ref: '#/components/responses/500InternalError'
+  /automatic-rules:
+    post:
+      summary: Create automatic rule
+      operationId: createAutomaticRule
+      tags:
+        - automatic-rule
+      requestBody:
+        required: true
+        description: Automatic rule to create
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/CreateAutomaticRuleRecordRequest'
+      responses:
+        200:
+          description: Requested
+          headers:
+            Location:
+              description: Url to automatic-rule
+              schema:
+                type: string
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ResourceIdentifier'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
+    get:
+      summary: Search automatic rules
+      operationId: getAutomaticRules
+      tags:
+        - automatic-rule
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AutomaticRuleRecord'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
+  /automatic-rules/{id}:
+    put:
+      summary: Update automatic rule record by ID
+      operationId: updateAutomaticRule
+      tags:
+        - automatic-rule
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        required: true
+        description: New automatic rule info
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/CreateAutomaticRuleRecordRequest'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        404:
+          $ref: '#/components/responses/404ItemNotFound'
+        500:
+          $ref: '#/components/responses/500InternalError'
+    delete:
+      summary: Delete automatic rule by ID
+      operationId: deleteAutomaticRule
+      tags:
+        - automatic-rule
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        204:
+          description: OK
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        404:
+          $ref: '#/components/responses/404ItemNotFound'
+        500:
+          $ref: '#/components/responses/500InternalError'
 components:
   schemas:
     ResourceIdentifier:
@@ -1135,6 +1226,51 @@ components:
           format: date-time
         status:
           $ref: '#/components/schemas/DataExportStatus'
+    AutomaticRuleRecord:
+      type: object
+      required:
+        - id
+        - name
+        - enabled
+        - action
+        - trigger
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        enabled:
+          type: boolean
+        trigger:
+          $ref: '#/components/schemas/AutomaticRuleTrigger'
+        action:
+          type: object
+          required:
+            - category
+          properties:
+            category:
+              $ref: '#/components/schemas/MiniCategoryRecord'
+            tag:
+              type: string
+            note:
+              type: string
+    AutomaticRuleTrigger:
+      type: object
+      required:
+        - type
+        - keywords
+      properties:
+        keywords:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+            - any
+            - income
+            - expense
     Problem:
       type: object
       required:
@@ -1404,7 +1540,35 @@ components:
           firstMonthOfYear:
             type: integer
             format: int32
-            example: 1   
+            example: 1
+    CreateAutomaticRuleRecordRequest:
+      type: object
+      required:
+        - name
+        - enabled
+        - action
+        - trigger
+      properties:
+        name:
+          type: string
+        enabled:
+          type: boolean
+        trigger:
+          $ref: '#/components/schemas/AutomaticRuleTrigger'
+        action:
+          type: object
+          required:
+            - category
+          properties:
+            category:
+              type: integer
+              format: int64
+            tag:
+              type: string
+            note:
+              type: string
+        correlationId:
+          type: string
   parameters:
       idParam:
           name: id

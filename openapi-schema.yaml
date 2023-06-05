@@ -1248,9 +1248,12 @@ components:
           type: object
           required:
             - category
+            - hidden
           properties:
             category:
               $ref: '#/components/schemas/MiniCategoryRecord'
+            hidden:
+              type: boolean
             tag:
               type: string
             note:
@@ -1258,19 +1261,15 @@ components:
     AutomaticRuleTrigger:
       type: object
       required:
-        - type
+        - income
         - keywords
       properties:
         keywords:
           type: array
           items:
             type: string
-        type:
-          type: string
-          enum:
-            - any
-            - income
-            - expense
+        income:
+          type: boolean
     Problem:
       type: object
       required:
@@ -1559,10 +1558,13 @@ components:
           type: object
           required:
             - category
+            - hidden
           properties:
             category:
               type: integer
               format: int64
+            hidden:
+              type: boolean
             tag:
               type: string
             note:

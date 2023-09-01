@@ -898,6 +898,97 @@ paths:
           $ref: '#/components/responses/404ItemNotFound'
         500:
           $ref: '#/components/responses/500InternalError'
+  /budgets:
+    post:
+      summary: Create budget
+      operationId: createBudget
+      tags:
+        - budget
+      requestBody:
+        required: true
+        description: Budget to create
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/CreateBudgetRecordRequest'
+      responses:
+        200:
+          description: Requested
+          headers:
+            Location:
+              description: Url to budget
+              schema:
+                type: string
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/ResourceIdentifier'
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
+    get:
+      summary: Search budgets
+      operationId: getBudgets
+      tags:
+        - budget
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BudgetRecord'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
+  /budgets/{id}:
+    put:
+      summary: Update budget record by ID
+      operationId: updateBudget
+      tags:
+        - budget
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        required: true
+        description: New budget info
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/UpdateBudgetRecordRequest'
+      responses:
+        204:
+          description: OK
+        400:
+          $ref: '#/components/responses/400BadRequest'
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        404:
+          $ref: '#/components/responses/404ItemNotFound'
+        500:
+          $ref: '#/components/responses/500InternalError'
+    delete:
+      summary: Delete budget by ID
+      operationId: deleteBudget
+      tags:
+        - budget
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        204:
+          description: OK
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        404:
+          $ref: '#/components/responses/404ItemNotFound'
+        500:
+          $ref: '#/components/responses/500InternalError'
 components:
   schemas:
     ResourceIdentifier:
@@ -1270,6 +1361,58 @@ components:
             type: string
         income:
           type: boolean
+    BudgetType:
+      type: string
+      example: category
+      enum:
+        - event
+        - category
+    BudgetRecord:
+      type: object
+      required:
+        - id
+        - type
+        - finished
+        - type
+        - limit
+        - initialLimit
+        - wallets
+        - startDate
+        - finishDate
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        finished:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/BudgetType'
+        category:
+          $ref: '#/components/schemas/MiniCategoryRecord'
+        event:
+          $ref: '#/components/schemas/MiniEventRecord'
+        remark:
+          type: string
+        limit:
+          type: number
+          format: float
+          example: 4.2
+        initialLimit:
+          type: number
+          format: float
+          example: 4.2
+        wallets:
+          type: array
+          items:
+            $ref: '#/components/schemas/MiniWalletRecord'
+        startDate:
+          type: string
+          format: date
+        finishDate:
+          type: string
+          format: date
     Problem:
       type: object
       required:
@@ -1570,6 +1713,90 @@ components:
             note:
               type: string
         correlationId:
+          type: string
+    CreateBudgetRecordRequest:
+      type: object
+      required:
+        - limit
+        - finished
+        - type
+        - startDate
+        - finishDate
+        - wallets
+      properties:
+        name:
+          type: string
+        finished:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/BudgetType'
+        limit:
+          type: number
+          format: float
+          example: 4.2
+        initialLimit:
+          type: number
+          format: float
+          example: 4.2
+        startDate:
+          type: string
+          format: date
+        finishDate:
+          type: string
+          format: date
+        category:
+          type: integer
+          format: int64
+        event:
+          type: integer
+          format: int64
+        wallets:
+          type: array
+          items:
+            type: integer
+            format: int64
+        remark:
+          type: string
+        correlationId:
+          type: string
+    UpdateBudgetRecordRequest:
+      type: object
+      required:
+        - limit
+        - finished
+        - type
+        - startDate
+        - finishDate
+        - wallets
+      properties:
+        name:
+          type: string
+        finished:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/BudgetType'
+        limit:
+          type: number
+          format: float
+          example: 4.2
+        startDate:
+          type: string
+          format: date
+        finishDate:
+          type: string
+          format: date
+        category:
+          type: integer
+          format: int64
+        event:
+          type: integer
+          format: int64
+        wallets:
+          type: array
+          items:
+            type: integer
+            format: int64
+        remark:
           type: string
   parameters:
       idParam:

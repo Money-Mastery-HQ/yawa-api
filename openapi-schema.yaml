@@ -1345,11 +1345,15 @@ components:
           properties:
             category:
               $ref: '#/components/schemas/MiniCategoryRecord'
+            event:
+              $ref: '#/components/schemas/MiniEventRecord'
             hidden:
               type: boolean
             tag:
               type: string
             note:
+              type: string
+            payee:
               type: string
     AutomaticRuleTrigger:
       type: object
@@ -1711,11 +1715,16 @@ components:
             category:
               type: integer
               format: int64
+            event:
+              type: integer
+              format: int64
             hidden:
               type: boolean
             tag:
               type: string
             note:
+              type: string
+            payee:
               type: string
         correlationId:
           type: string

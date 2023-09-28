@@ -165,10 +165,10 @@ paths:
           $ref: '#/components/responses/401Unauthorized'
         500:
           $ref: '#/components/responses/500InternalError'
-  /users/me/preferences/wallet:
+  /users/me/preferences/favorite-wallet:
     put:
-      summary: Update authenticated user selected wallet
-      operationId: updateAuthenticatedUserSelectedWallet
+      summary: Update authenticated user favorite wallet
+      operationId: updateAuthenticatedUserFavoriteWallet
       tags:
         - user
       parameters:
@@ -186,8 +186,8 @@ paths:
         500:
           $ref: '#/components/responses/500InternalError'
     delete:
-      summary: Reset authenticated user selected wallet
-      operationId: resetAuthenticatedUserSelectedWallet
+      summary: Reset authenticated user favorite wallet
+      operationId: resetAuthenticatedUserFavoriteWallet
       tags:
         - user
       responses:
@@ -1050,6 +1050,8 @@ components:
       properties:
         selectedWallet:
           $ref: '#/components/schemas/MiniWalletRecord'
+        favoriteWallet:
+          $ref: '#/components/schemas/MiniWalletRecord'
         timeZoneOffset:
           type: integer
           format: int32
@@ -1641,6 +1643,9 @@ components:
         - firstMonthOfYear
       properties:
         selectedWallet:
+          type: integer
+          format: int64
+        favoriteWallet:
           type: integer
           format: int64
         timeZoneOffset:

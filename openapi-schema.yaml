@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '0.13'
+  version: '0.14'
   title: Yawa Service
   description: Yawa REST API
 servers:

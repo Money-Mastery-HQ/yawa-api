@@ -1326,7 +1326,6 @@ components:
       type: object
       required:
         - id
-        - name
         - enabled
         - action
         - trigger
@@ -1701,7 +1700,6 @@ components:
     CreateAutomaticRuleRecordRequest:
       type: object
       required:
-        - name
         - enabled
         - action
         - trigger

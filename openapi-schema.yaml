@@ -1074,6 +1074,7 @@ components:
         required:
           - id
           - amount
+          - bookingDate
           - timestamp
           - processingTimestamp
           - income
@@ -1093,9 +1094,15 @@ components:
             income:
                 type: boolean
                 example: true
+            bookingDate:
+              type: string
+              format: date-time
             timestamp:
                 type: string
                 format: date-time
+            valueDate:
+              type: string
+              format: date-time
             processingTimestamp:
                 type: string
                 format: date-time
@@ -1520,10 +1527,18 @@ components:
               note:
                   type: string
                   example: null
+              bookingDate:
+                type: string
+                format: date-time
+                example: 2024-02-08T20:50+03:00
               timestamp:
                   type: string
                   format: date-time
                   example: 2021-10-08T20:50+03:00
+              valueDate:
+                type: string
+                format: date-time
+                example: 2024-02-08T20:50+03:00
               processingTimestamp:
                 type: string
                 format: date-time

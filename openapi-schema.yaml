@@ -1117,6 +1117,8 @@ components:
               type: string
             amountConversion:
               $ref: '#/components/schemas/AmountConversion'
+            externalId:
+              type: string
     MiniCategoryRecord:
         type: object
         required:
@@ -1542,6 +1544,8 @@ components:
                   type: string
               amountConversion:
                 $ref: '#/components/schemas/AmountConversion'
+              externalId:
+                type: string
               correlationId:
                 type: string
     CreateCategoryRecordRequest:

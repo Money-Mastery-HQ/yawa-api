@@ -1043,11 +1043,14 @@ components:
     UserPreferencesRecord:
       type: object
       required:
+        - primaryCurrencyCode
         - timeZoneOffset
         - firstDayOfWeek
         - firstDayOfMonth
         - firstMonthOfYear
       properties:
+        primaryCurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
         favoriteWallet:
           $ref: '#/components/schemas/MiniWalletRecord'
         timeZoneOffset:
@@ -1440,6 +1443,8 @@ components:
               password:
                   type: string
                   example: qwerty1234
+              primaryCurrencyCode:
+                $ref: '#/components/schemas/CurrencyCode'
               timeZoneOffset:
                   type: integer
                   format: int32
@@ -1648,6 +1653,8 @@ components:
         - firstDayOfMonth
         - firstMonthOfYear
       properties:
+        primaryCurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
         favoriteWallet:
           type: integer
           format: int64

@@ -1048,8 +1048,6 @@ components:
         - firstDayOfMonth
         - firstMonthOfYear
       properties:
-        selectedWallet:
-          $ref: '#/components/schemas/MiniWalletRecord'
         favoriteWallet:
           $ref: '#/components/schemas/MiniWalletRecord'
         timeZoneOffset:
@@ -1646,9 +1644,6 @@ components:
         - firstDayOfMonth
         - firstMonthOfYear
       properties:
-        selectedWallet:
-          type: integer
-          format: int64
         favoriteWallet:
           type: integer
           format: int64

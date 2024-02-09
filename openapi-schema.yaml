@@ -1329,11 +1329,19 @@ components:
           format: date-time
         status:
           $ref: '#/components/schemas/DataExportStatus'
+    AutomaticRuleNoteType:
+      type: string
+      example: CUSTOM
+      enum:
+        - CUSTOM
+        - ORIGINAL_NOTE
+        - MATCHING_KEYWORD
     AutomaticRuleRecord:
       type: object
       required:
         - id
         - enabled
+        - noteType
         - action
         - trigger
       properties:
@@ -1344,6 +1352,8 @@ components:
           type: string
         enabled:
           type: boolean
+        noteType:
+          $ref: '#/components/schemas/AutomaticRuleNoteType'
         trigger:
           $ref: '#/components/schemas/AutomaticRuleTrigger'
         action:
@@ -1745,6 +1755,8 @@ components:
               type: string
             payee:
               type: string
+        noteType:
+          $ref: '#/components/schemas/AutomaticRuleNoteType'
         correlationId:
           type: string
     CreateBudgetRecordRequest:

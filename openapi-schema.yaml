@@ -1329,7 +1329,7 @@ components:
           format: date-time
         status:
           $ref: '#/components/schemas/DataExportStatus'
-    AutomaticRuleNoteType:
+    AutomaticRuleActionNoteType:
       type: string
       example: CUSTOM
       enum:
@@ -1341,7 +1341,6 @@ components:
       required:
         - id
         - enabled
-        - noteType
         - action
         - trigger
       properties:
@@ -1352,8 +1351,6 @@ components:
           type: string
         enabled:
           type: boolean
-        noteType:
-          $ref: '#/components/schemas/AutomaticRuleNoteType'
         trigger:
           $ref: '#/components/schemas/AutomaticRuleTrigger'
         action:
@@ -1361,6 +1358,7 @@ components:
           required:
             - category
             - hidden
+            - noteType
           properties:
             category:
               $ref: '#/components/schemas/MiniCategoryRecord'
@@ -1372,6 +1370,8 @@ components:
               type: string
             note:
               type: string
+            noteType:
+              $ref: '#/components/schemas/AutomaticRuleActionNoteType'
             payee:
               type: string
     AutomaticRuleTrigger:
@@ -1751,12 +1751,12 @@ components:
               type: boolean
             tag:
               type: string
+            noteType:
+              $ref: '#/components/schemas/AutomaticRuleActionNoteType'
             note:
               type: string
             payee:
               type: string
-        noteType:
-          $ref: '#/components/schemas/AutomaticRuleNoteType'
         correlationId:
           type: string
     CreateBudgetRecordRequest:

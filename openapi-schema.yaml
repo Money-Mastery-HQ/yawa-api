@@ -1378,6 +1378,7 @@ components:
       type: object
       required:
         - income
+        - partial
         - keywords
       properties:
         keywords:
@@ -1386,6 +1387,9 @@ components:
             type: string
         income:
           type: boolean
+        partial:
+          type: boolean
+          default: true
     BudgetType:
       type: string
       example: category

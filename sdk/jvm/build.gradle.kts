@@ -11,7 +11,7 @@ subprojects {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/kascoder/yawa-api")
+                url = uri("https://maven.pkg.github.com/Money-Mastery-HQ/yawa-api")
                 credentials {
                     username = System.getenv("GITHUB_ACTOR")
                     password = System.getenv("GITHUB_TOKEN")

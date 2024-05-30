@@ -1,7 +1,7 @@
 plugins {
     kotlin("plugin.spring") version "1.7.10"
     id("io.spring.dependency-management") version "1.0.14.RELEASE"
-    id("org.openapi.generator") version "6.2.1"
+    id("org.openapi.generator") version "6.6.0"
 }
 
 version = "0.16.1-SNAPSHOT"
@@ -18,8 +18,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8", kotlinVersion))
     implementation("javax.validation:validation-api:2.0.1.Final")
     compileOnly("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("org.springframework:spring-webmvc:5.3.23")
-    implementation("io.swagger:swagger-core:1.6.8")
+    implementation("org.springframework:spring-webmvc:5.3.36")
+    implementation("io.swagger.core.v3:swagger-core:2.2.21")
     implementation("com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
 }
@@ -58,7 +58,7 @@ tasks.openApiGenerate {
             "swaggerAnnotations" to "true",
             "useBeanValidation" to "false",
             "documentationProvider" to "none",
-            "annotationLibrary" to "swagger1",
+            "annotationLibrary" to "swagger2"
         )
     )
     typeMappings.set(

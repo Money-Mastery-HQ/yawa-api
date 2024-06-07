@@ -37,6 +37,7 @@ paths:
           operationId: logout
           security:
             - BasicAuth: []
+              BearerAuth: []
           tags:
               - authentication
           responses:
@@ -83,6 +84,7 @@ paths:
           operationId: getAuthenticatedUser
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - user
           responses:
@@ -101,6 +103,7 @@ paths:
         operationId: deleteUser
         security:
           - BasicAuth: []
+            BearerAuth: [ ]
         tags:
           - user
         responses:
@@ -116,6 +119,7 @@ paths:
         operationId: getAuthenticatedUserPreferences
         security:
           - BasicAuth: []
+            BearerAuth: [ ]
         tags:
           - user
         responses:
@@ -134,6 +138,7 @@ paths:
         operationId: updateAuthenticatedUserPreferences
         security:
           - BasicAuth: [ ]
+            BearerAuth: [ ]
         tags:
           - user
         requestBody:
@@ -158,6 +163,7 @@ paths:
       operationId: updateAuthenticatedUserBasicPreferences
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - user
       requestBody:
@@ -182,6 +188,7 @@ paths:
       operationId: updateAuthenticatedUserFavoriteWallet
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - user
       parameters:
@@ -203,6 +210,7 @@ paths:
       operationId: resetAuthenticatedUserFavoriteWallet
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - user
       responses:
@@ -218,6 +226,7 @@ paths:
           operationId: createCategory
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - category
           requestBody:
@@ -250,6 +259,7 @@ paths:
         operationId: getCategories
         security:
           - BasicAuth: [ ]
+            BearerAuth: [ ]
         tags:
             - category
         responses:
@@ -271,6 +281,7 @@ paths:
           operationId: getCategory
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - category
           parameters:
@@ -293,6 +304,7 @@ paths:
           operationId: updateCategory
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - category
           parameters:
@@ -320,6 +332,7 @@ paths:
           operationId: deleteCategory
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - category
           parameters:
@@ -339,6 +352,7 @@ paths:
           operationId: createTransaction
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - transaction
           requestBody:
@@ -371,6 +385,7 @@ paths:
         operationId: getTransactions
         security:
           - BasicAuth: [ ]
+            BearerAuth: [ ]
         tags:
             - transaction
         parameters:
@@ -437,6 +452,7 @@ paths:
           operationId: getTransaction
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - transaction
           parameters:
@@ -459,6 +475,7 @@ paths:
           operationId: updateTransaction
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - transaction
           parameters:
@@ -486,6 +503,7 @@ paths:
           operationId: deleteTransaction
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - transaction
           parameters:
@@ -505,6 +523,7 @@ paths:
           operationId: createWallet
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - wallet
           requestBody:
@@ -537,6 +556,7 @@ paths:
         operationId: getWallets
         security:
           - BasicAuth: [ ]
+            BearerAuth: [ ]
         tags:
             - wallet
         responses:
@@ -558,6 +578,7 @@ paths:
           operationId: getWallet
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - wallet
           parameters:
@@ -580,6 +601,7 @@ paths:
           operationId: updateWallet
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - wallet
           parameters:
@@ -607,6 +629,7 @@ paths:
           operationId: deleteWallet
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - wallet
           parameters:
@@ -626,6 +649,7 @@ paths:
           operationId: getCurrencies
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
             - wallet
           responses:
@@ -647,6 +671,7 @@ paths:
           operationId: createEvent
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - event
           requestBody:
@@ -679,6 +704,7 @@ paths:
         operationId: getEvents
         security:
           - BasicAuth: [ ]
+            BearerAuth: [ ]
         tags:
             - event
         responses:
@@ -700,6 +726,7 @@ paths:
           operationId: getEvent
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - event
           parameters:
@@ -722,6 +749,7 @@ paths:
           operationId: updateEvent
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - event
           parameters:
@@ -749,6 +777,7 @@ paths:
           operationId: deleteEvent
           security:
             - BasicAuth: [ ]
+              BearerAuth: [ ]
           tags:
               - event
           parameters:
@@ -768,6 +797,7 @@ paths:
       operationId: getEventTransactions
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - event
       parameters:
@@ -813,6 +843,7 @@ paths:
       operationId: requestDataExport
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - data-export
       responses:
@@ -838,6 +869,7 @@ paths:
       operationId: getDataExports
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - data-export
       responses:
@@ -859,6 +891,7 @@ paths:
       operationId: deleteDataExport
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - data-export
       parameters:
@@ -878,6 +911,7 @@ paths:
       operationId: createAutomaticRule
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - automatic-rule
       requestBody:
@@ -910,6 +944,7 @@ paths:
       operationId: getAutomaticRules
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - automatic-rule
       responses:
@@ -931,6 +966,7 @@ paths:
       operationId: updateAutomaticRule
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - automatic-rule
       parameters:
@@ -958,6 +994,7 @@ paths:
       operationId: deleteAutomaticRule
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - automatic-rule
       parameters:
@@ -977,6 +1014,7 @@ paths:
       operationId: createBudget
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - budget
       requestBody:
@@ -1009,6 +1047,7 @@ paths:
       operationId: getBudgets
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - budget
       responses:
@@ -1030,6 +1069,7 @@ paths:
       operationId: updateBudget
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - budget
       parameters:
@@ -1057,6 +1097,7 @@ paths:
       operationId: deleteBudget
       security:
         - BasicAuth: [ ]
+          BearerAuth: [ ]
       tags:
         - budget
       parameters:
@@ -1972,3 +2013,7 @@ components:
     BasicAuth:
       type: http
       scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

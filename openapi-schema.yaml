@@ -1292,6 +1292,8 @@ components:
             income:
                 type: boolean
                 example: false
+            description:
+                type: string
             internalType:
                 $ref: '#/components/schemas/CategoryInternalType'
             parent:
@@ -1713,6 +1715,8 @@ components:
                 type: boolean
                 example: false
                 default: false
+              description:
+                type: string
               parentCategory:
                   type: integer
                   format: int64
@@ -1732,6 +1736,8 @@ components:
                   type: boolean
                   example: false
                   default: false
+              description:
+                  type: string
               parentCategory:
                   type: integer
                   format: int64

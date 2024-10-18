@@ -1201,7 +1201,6 @@ components:
           - processingTimestamp
           - income
           - hidden
-          - excludeFromReport
           - category
           - wallet
         properties:
@@ -1233,9 +1232,6 @@ components:
                 example: work
             note:
                 type: string
-            excludeFromReport:
-                type: boolean
-                example: false
             hidden:
               type: boolean
               example: false
@@ -1649,7 +1645,7 @@ components:
           - amount
           - timestamp
           - processingTimestamp
-          - excludeFromReport
+          - hidden
           - category
           - wallet
         properties:
@@ -1678,9 +1674,6 @@ components:
               processingTimestamp:
                 type: string
                 format: date-time
-              excludeFromReport:
-                  type: boolean
-                  example: false
               hidden:
                 type: boolean
                 example: false

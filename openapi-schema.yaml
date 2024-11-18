@@ -1111,109 +1111,6 @@ paths:
           $ref: '#/components/responses/404ItemNotFound'
         500:
           $ref: '#/components/responses/500InternalError'
-  /labels:
-    post:
-      summary: Create label
-      operationId: createLabel
-      security:
-        - BasicAuth: [ ]
-          BearerAuth: [ ]
-      tags:
-        - label
-      requestBody:
-        required: true
-        description: Label to create
-        content:
-          'application/json':
-            schema:
-              $ref: '#/components/schemas/CreateLabelRecordRequest'
-      responses:
-        200:
-          description: Requested
-          headers:
-            Location:
-              description: Url to label
-              schema:
-                type: string
-          content:
-            'application/json':
-              schema:
-                $ref: '#/components/schemas/ResourceIdentifier'
-        400:
-          $ref: '#/components/responses/400BadRequest'
-        401:
-          $ref: '#/components/responses/401Unauthorized'
-        500:
-          $ref: '#/components/responses/500InternalError'
-    get:
-      summary: Search labels
-      operationId: getLabels
-      security:
-        - BasicAuth: [ ]
-          BearerAuth: [ ]
-      tags:
-        - label
-      responses:
-        200:
-          description: OK
-          content:
-            'application/json':
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/LabelRecord'
-        401:
-          $ref: '#/components/responses/401Unauthorized'
-        500:
-          $ref: '#/components/responses/500InternalError'
-  /labels/{id}:
-      put:
-        summary: Update label record by ID
-        operationId: updateLabel
-        security:
-          - BasicAuth: [ ]
-            BearerAuth: [ ]
-        tags:
-          - label
-        parameters:
-          - $ref: '#/components/parameters/idParam'
-        requestBody:
-          required: true
-          description: New budget info
-          content:
-            'application/json':
-              schema:
-                $ref: '#/components/schemas/UpdateLabelRecordRequest'
-        responses:
-          204:
-            description: OK
-          400:
-            $ref: '#/components/responses/400BadRequest'
-          401:
-            $ref: '#/components/responses/401Unauthorized'
-          404:
-            $ref: '#/components/responses/404ItemNotFound'
-          500:
-            $ref: '#/components/responses/500InternalError'
-      delete:
-          summary: Delete label by ID
-          operationId: deleteLabel
-          security:
-            - BasicAuth: [ ]
-              BearerAuth: [ ]
-          tags:
-            - label
-          parameters:
-            - $ref: '#/components/parameters/idParam'
-          responses:
-            204:
-              description: OK
-            401:
-              $ref: '#/components/responses/401Unauthorized'
-            404:
-              $ref: '#/components/responses/404ItemNotFound'
-            500:
-              $ref: '#/components/responses/500InternalError'
 components:
   schemas:
     ResourceIdentifier:
@@ -1665,42 +1562,6 @@ components:
         finishDate:
           type: string
           format: date
-    MiniLabelRecord:
-      type: object
-      required:
-        - id
-        - name
-        - archived
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
-        name:
-          type: string
-          example: vacation
-        archived:
-          type: boolean
-          example: false
-    LabelRecord:
-      type: object
-      required:
-        - id
-        - name
-        - archived
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 1
-        name:
-          type: string
-          example: vacation
-        archived:
-          type: boolean
-          example: false
-        groupName:
-          type: string
     Problem:
       type: object
       required:
@@ -2106,36 +1967,6 @@ components:
             type: integer
             format: int64
         remark:
-          type: string
-    CreateLabelRecordRequest:
-      type: object
-      required:
-        - name
-        - archived
-      properties:
-        name:
-          type: string
-          example: vacation
-        archived:
-          type: boolean
-          example: true
-        groupName:
-          type: string
-        correlationId:
-          type: string
-    UpdateLabelRecordRequest:
-      type: object
-      required:
-        - name
-        - archived
-      properties:
-        name:
-          type: string
-          example: vacation
-        archived:
-          type: boolean
-          example: true
-        groupName:
           type: string
   parameters:
       idParam:

@@ -667,16 +667,16 @@ paths:
               $ref: '#/components/responses/500InternalError'          
   /events:
       post:
-          summary: Create event record
-          operationId: createEvent
+          summary: Create label record
+          operationId: createLabel
           security:
             - BasicAuth: [ ]
               BearerAuth: [ ]
           tags:
-              - event
+              - label
           requestBody:
               required: true
-              description: Event to create
+              description: Label to create
               content:
                   'application/json':
                       schema:
@@ -686,7 +686,7 @@ paths:
                 description: Created
                 headers:
                     Location:
-                        description: Url to event record
+                        description: Url to label record
                         schema:
                             type: string
                 content:
@@ -700,13 +700,13 @@ paths:
               500:
                 $ref: '#/components/responses/500InternalError'
       get:
-        summary: Search event records
-        operationId: getEvents
+        summary: Search label records
+        operationId: getLabels
         security:
           - BasicAuth: [ ]
             BearerAuth: [ ]
         tags:
-            - event
+            - label
         responses:
             200:
                 description: OK
@@ -722,13 +722,13 @@ paths:
                 $ref: '#/components/responses/500InternalError'
   /events/{id}:
       get:
-          summary: Get event record by ID
-          operationId: getEvent
+          summary: Get label record by ID
+          operationId: getLabel
           security:
             - BasicAuth: [ ]
               BearerAuth: [ ]
           tags:
-              - event
+              - label
           parameters:
               - $ref: '#/components/parameters/idParam'
           responses:
@@ -745,18 +745,18 @@ paths:
               500:
                 $ref: '#/components/responses/500InternalError'
       put:
-          summary: Update event record by ID
-          operationId: updateEvent
+          summary: Update label record by ID
+          operationId: updateLabel
           security:
             - BasicAuth: [ ]
               BearerAuth: [ ]
           tags:
-              - event
+              - label
           parameters:
               - $ref: '#/components/parameters/idParam'
           requestBody:
               required: true
-              description: New event info
+              description: New label info
               content:
                   'application/json':
                       schema:
@@ -773,13 +773,13 @@ paths:
             500:
                 $ref: '#/components/responses/500InternalError'
       delete:
-          summary: Delete event record by ID
-          operationId: deleteEvent
+          summary: Delete label record by ID
+          operationId: deleteLabel
           security:
             - BasicAuth: [ ]
               BearerAuth: [ ]
           tags:
-              - event
+              - label
           parameters:
               - $ref: '#/components/parameters/idParam'
           responses:
@@ -793,13 +793,13 @@ paths:
                 $ref: '#/components/responses/500InternalError'
   /events/{id}/transactions:
     get:
-      summary: Get event transaction records sorting by date descending
-      operationId: getEventTransactions
+      summary: Get label transaction records sorting by date descending
+      operationId: getLabelTransactions
       security:
         - BasicAuth: [ ]
           BearerAuth: [ ]
       tags:
-        - event
+        - label
       parameters:
         - $ref: '#/components/parameters/idParam'
         - name: page

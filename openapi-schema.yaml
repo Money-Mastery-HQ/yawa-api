@@ -849,6 +849,21 @@ paths:
             BearerAuth: [ ]
         tags:
             - event
+        parameters:
+          - name: from
+            in: query
+            required: false
+            schema:
+              type: string
+              format: date-time
+              example: 2021-12-08T22:50+03:00
+          - name: to
+            in: query
+            required: false
+            schema:
+              type: string
+              format: date-time
+              example: 2021-12-08T22:50+03:00
         responses:
             200:
                 description: OK

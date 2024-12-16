@@ -498,6 +498,13 @@ paths:
                 type: array
                 items:
                   type: string
+            - name: payee
+              in: query
+              required: false
+              schema:
+                type: array
+                items:
+                  type: string
         responses:
             200:
                 description: OK

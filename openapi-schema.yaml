@@ -491,6 +491,13 @@ paths:
                   items:
                     type: integer
                     format: int64
+            - name: tag
+              in: query
+              required: false
+              schema:
+                type: array
+                items:
+                  type: string
         responses:
             200:
                 description: OK

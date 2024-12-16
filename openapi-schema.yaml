@@ -599,6 +599,28 @@ paths:
           $ref: '#/components/responses/401Unauthorized'
         500:
           $ref: '#/components/responses/500InternalError'
+  /transactions/tags:
+    get:
+      summary: Get tags
+      operationId: getTags
+      security:
+        - BasicAuth: [ ]
+          BearerAuth: [ ]
+      tags:
+        - transaction
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  type: string
+        401:
+          $ref: '#/components/responses/401Unauthorized'
+        500:
+          $ref: '#/components/responses/500InternalError'
   /wallets:
       post:
           summary: Create wallet record
